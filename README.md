@@ -1,2 +1,3 @@
-#Calm Quest
-The Calm Quest Admin Dashboard is a streamlined tool designed to empower administrators with comprehensive control over the Calm Quest platform. Through an intuitive interface, administrators can effortlessly manage student and counselor data, oversee user interactions, and facilitate effective communication. The dashboard provides real-time insights, enabling swift decision-making while maintaining a seamless user experience. With its user-friendly design and powerful features, the Calm Quest Admin Dashboard optimizes administrative tasks, ensuring a harmonious and supportive environment for students and counselors alike.
+## Calm Quest Admin Dashboard
+
+The **Calm Quest Admin Dashboard** is a user-friendly tool that empowers administrators to efficiently manage the Calm Quest platform. With an intuitive interface, it allows seamless management of student and counselor data, tracking user interactions, and facilitating communication. Real-time insights aid in swift decision-making, ensuring a harmonious environment. This dashboard optimizes administrative tasks, fostering a supportive space for students and counselors.
