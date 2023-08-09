@@ -15,10 +15,10 @@ const CounselorListTable = ({ counselors, onEditClick, onDeleteClick }) => {
           </tr>
         </thead>
         <tbody>
-          {counselors.map((counselor) => (
-            <tr key={counselor.email} className="hover:bg-gray-50">
-              <td className="border border-gray-300 px-4 py-2">{counselor.firstName}</td>
-              <td className="border border-gray-300 px-4 py-2">{counselor.lastName}</td>
+          {counselors.map((counselor,id) => (
+            <tr key={id} className="hover:bg-gray-50">
+              <td className="border border-gray-300 px-4 py-2">{counselor.firstname}</td>
+              <td className="border border-gray-300 px-4 py-2">{counselor.lastname}</td>
               <td className="border border-gray-300 px-4 py-2">{counselor.gender}</td>
               <td className="border border-gray-300 px-4 py-2">{counselor.email}</td>
               <td className="border border-gray-300 px-4 py-2">{counselor.workplace}</td>
@@ -31,7 +31,7 @@ const CounselorListTable = ({ counselors, onEditClick, onDeleteClick }) => {
                 </button>
                 <button
                   className="bg-red-500 text-white px-2 py-1 rounded-md hover:bg-red-600"
-                  onClick={() => onDeleteClick(counselor.email)}
+                  onClick={() => onDeleteClick(counselor.id)}
                 >
                   Delete
                 </button>

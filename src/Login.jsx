@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import API_URL from "./config";
 // import AuthService from "../services/auth.service";
 import "./Login.css";
 // import { Nav } from "../Nav";
@@ -18,15 +19,16 @@ export const Login = () => {
     e.preventDefault();
     try {
       await axios
-        .post("http://localhost:8080/api/v1/auth/authenticate", {
-          username: email,
+        .post(`${API_URL}/auth/authenticate`, {
+          email: email,
           password: password,
         })
         .then((Response) => {
           console.log("Logged In",Response);
-          if (Response.data.token) {
+          if (Response.data.access_token) {
             localStorage.setItem("user", JSON.stringify(Response.data));
           }
+          navigate("/")
           return Response.data;
         });
     } catch (err) {

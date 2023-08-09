@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-
+import axios from "axios";
+import API_URL from "./config";
 const StudentCreateForm = () => {
   const [formData, setFormData] = useState({
     firstName: "",
@@ -22,10 +23,24 @@ const StudentCreateForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Send formData to the endpoint using an API call
-    console.log(formData);
-  };
 
+    const storedUser = localStorage.getItem('user');
+    const user = JSON.parse(storedUser);
+    const token = user.access_token; // Assuming your user data structure includes a 'token' field
+    console.log(token)
+    const headers = { Authorization: `Bearer ${token}` };
+
+    // Send formData to the endpoint using an API call
+    axios.post(`${API_URL}/admin/student`, formData, { headers })
+      .then(response => {
+        console.log('Student created successfully:', response.data);
+        // Handle success if needed
+      })
+      .catch(error => {
+        console.error('Error creating student:', error);
+        // Handle error if needed
+      });
+  };
   return (
     <div className="p-4">
       <p className="header text-center font-[501] font-black text-4xl">

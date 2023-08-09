@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import API_URL from './config';
+
 
 const CounselorCreateForm = () => {
   const [formData, setFormData] = useState({
@@ -20,8 +23,31 @@ const CounselorCreateForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const storedUser = localStorage.getItem('user');
+    const user = JSON.parse(storedUser);
+    const token = user.access_token; // Assuming your user data structure includes a 'token' field
+    console.log(token)
+    const headers = { Authorization: `Bearer ${token}` };
+
     // Send formData to the endpoint using an API call
-    console.log(formData);
+    axios.post(`${API_URL}/admin/counselor`, formData, { headers })
+      .then(response => {
+        console.log('Counselor created successfully:', response.data);
+        setFormData({
+          firstName: '',
+          lastName: '',
+          password: '',
+          gender: '',
+          email: '',
+          workplace: ''
+        })
+        // Handle success if needed
+      })
+      .catch(error => {
+        console.error('Error creating student:', error);
+        // Handle error if needed
+      });
   };
 
   return (
@@ -60,6 +86,20 @@ const CounselorCreateForm = () => {
           />
         </div>
         <div className="mb-4">
+              <label className="block mb-2 text-sm font-bold" htmlFor="email">
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+        <div className="mb-4">
           <label className="block mb-2 text-sm font-bold" htmlFor="password">
             Password
           </label>
@@ -83,6 +123,21 @@ const CounselorCreateForm = () => {
             name="gender"
             className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring"
             value={formData.gender}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="mb-4">
+          <label className="block mb-2 text-sm font-bold" htmlFor="gender">
+           Workplace
+          </label>
+          <input
+            type="text"
+            id="workplace"
+            name="workplace"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring"
+            value={formData.workplace}
             onChange={handleChange}
             required
           />

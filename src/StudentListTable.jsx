@@ -19,16 +19,16 @@ const StudentListTable = ({ students, onEditClick, onDeleteClick }) => {
           </tr>
         </thead>
         <tbody>
-          {students.map((student) => (
+          {students.map((student,id) => (
             <tr
-              key={student.studentRegistrationNumber}
+              key={id}
               className="hover:bg-gray-50"
             >
               <td className="border border-gray-300 px-4 py-2">
-                {student.firstName}
+                {student.firstname}
               </td>
               <td className="border border-gray-300 px-4 py-2">
-                {student.lastName}
+                {student.lastname}
               </td>
               <td className="border border-gray-300 px-4 py-2">
                 {student.gender}
@@ -56,7 +56,7 @@ const StudentListTable = ({ students, onEditClick, onDeleteClick }) => {
                 <button
                   className="bg-red-500 text-white px-2 py-1 rounded-md hover:bg-red-600"
                   onClick={() =>
-                    onDeleteClick(student.studentRegistrationNumber)
+                    onDeleteClick(student.id)
                   }
                 >
                   Delete
