@@ -109,6 +109,7 @@ export const Dashboard = () => {
     axios.get(`${API_URL}/admin/student`, { headers })
       .then(response => {
         setStudents(response.data); // Set the fetched students data
+        console.log(response.data)
       })
       .catch(error => {
         console.error('Error fetching students:', error);

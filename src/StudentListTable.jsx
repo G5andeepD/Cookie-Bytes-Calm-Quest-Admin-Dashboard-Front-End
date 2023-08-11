@@ -15,6 +15,9 @@ const StudentListTable = ({ students, onEditClick, onDeleteClick }) => {
             </th>
             <th className="border border-gray-300 px-4 py-2">Faculty</th>
             <th className="border border-gray-300 px-4 py-2">University</th>
+            <th className="border border-gray-300 px-4 py-2">
+                Counselor
+            </th>
             <th className="border border-gray-300 px-4 py-2">Actions</th>
           </tr>
         </thead>
@@ -45,6 +48,13 @@ const StudentListTable = ({ students, onEditClick, onDeleteClick }) => {
               <td className="border border-gray-300 px-4 py-2">
                 {student.university}
               </td>
+              {student.counselor && <td className="border border-gray-300 px-4 py-2">
+                {student.counselor.firstname + " " + student.counselor.lastname}
+              </td>}
+              {!student.counselor && <td className="border border-gray-300 px-4 py-2">
+                Not Assigned Yet
+              </td>}
+              
 
               <td className="border border-gray-300 px-4 py-2">
                 <button

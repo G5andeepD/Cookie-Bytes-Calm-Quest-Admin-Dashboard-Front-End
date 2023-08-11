@@ -28,7 +28,7 @@ export const Login = () => {
           if (Response.data.access_token) {
             localStorage.setItem("user", JSON.stringify(Response.data));
           }
-          navigate("/")
+          navigate("/dashboard")
           return Response.data;
         });
     } catch (err) {
